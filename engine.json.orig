@@ -5,9 +5,9 @@
   "engineFactory": "com.atlasbots.RecommendationEngine",
   "datasource": {
     "params" : {
-      "name": "initial-smartcampus-data.txt",
-      "appName": "SmartCampus",
-      "eventNames": ["star", "view"]
+      "name": "sample-handmade-data.txt",
+      "appName": "handmade",
+      "eventNames": ["purchase", "view"]
     }
   },
   "sparkConf": {
@@ -23,18 +23,11 @@
       "comment": "simplest setup where all values are default, popularity based backfill, must add eventsNames",
       "name": "ur",
       "params": {
-        "appName": "SmartCampus",
+        "appName": "handmade",
         "indexName": "urindex",
-        "typeName": "events",
-        "comment": "I think user subscribing to a category should be considered as an event, should find a better way to represent it here",
-        "eventNames": ["star", "view"],
-        "blacklistEvents": ["star", "view"],
-        "maxEventsPerEventType": 100,
-        "maxCorrelatorsPerEventType": 50,
-        "comment": "I think we should estimate a number for maxQueryEvents so that it effectively captures user's current interests",
-        "maxQueryEvents": 500,
-        "num": 10,
-        "comment": "Not including majority of params below 'fields, look into that if any advanced feature is needed'"
+        "typeName": "items",
+        "comment": "must have data for the first event or the model will not build, other events are optional",
+        "eventNames": ["purchase", "view"]
       }
     }
   ]
